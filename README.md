@@ -1,2 +1,3 @@
 # botfx
-Bot For forex trading and algorithms
+Bot For forex trading and algorithms1
+

@@ -4,10 +4,10 @@ from MetaTrader5._core import terminal_info
 
 # display data on the metatrader5 package
 
-print ("metatrader5 package autor",mt5.__author__)
-print ("metatrader5 package version",mt5.__version__)
-print ("autors of the bot: Machine block and R6Doc")
-print ("bot version 1.0")
+print ("Metatrader5 Package Autor",mt5.__author__)
+print ("Metatrader5 Package Version",mt5.__version__)
+print ("Autors of the bot: Machineblock and R6Doc")
+print ("Bot version 0.01")
 
 # establish connection to the MetaTrader 5 terminal
 if not mt5.initialize(login=27865035, server="MetaQuotesDemo",password="vlnp3nkt"):

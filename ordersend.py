@@ -14,6 +14,35 @@ if not mt5.initialize():
     print("initialize() failed, error code =",mt5.last_error())
     
 
+# get account currency
+account_currency=mt5.account_info().currency
+print("Account сurrency:",account_currency)
+ 
+# arrange the symbol list
+symbols=("EURUSD")
+print("Symbols to check margin:", symbols)
+action=mt5.ORDER_TYPE_BUY
+lot=0.01
+for symbol in symbols:
+    symbol_info=mt5.symbol_info(symbol)
+    if symbol_info is None:
+        print(symbol,"not found, skipped")
+        continue
+    if not symbol_info.visible:
+        print(symbol, "is not visible, trying to switch on")
+        if not mt5.symbol_select(symbol,True):
+            print("symbol_select({}}) failed, skipped",symbol)
+            continue
+    ask=mt5.symbol_info_tick(symbol).ask
+    margin=mt5.order_calc_margin(action,symbol,lot,ask)
+    if margin != None:
+        print("   {} buy {} lot margin: {} {}".format(symbol,lot,margin,account_currency));
+    else:
+        print("order_calc_margin failed: , error code =", mt5.last_error())
+
+
+
+
 # display data on MetaTrader 5 version
 print(mt5.version())
 # connect to the trade account without specifying a password and a server
@@ -39,7 +68,7 @@ else:
     print("failed to connect at account #28896895, error code:".format(account, mt5.last_error()))
  
 # prepare the buy request structure
-symbol = "USDJPY"
+symbol = "EURUSD"
 symbol_info = mt5.symbol_info(symbol)
 if symbol_info is None:
     print(symbol, "not found, can not call order_check()")
@@ -50,11 +79,11 @@ if symbol_info is None:
 if not symbol_info.visible:
     print(symbol, "is not visible, trying to switch on")
     if not mt5.symbol_select(symbol,True):
-        print("symbol_select({}}) failed, exit",symbol)
+        print("symbol_select(EURUSD) failed, exit",symbol)
         mt5.shutdown()
         quit()
  
-lot = 0.1
+lot = 0.01
 point = mt5.symbol_info(symbol).point
 price = mt5.symbol_info_tick(symbol).ask
 deviation = 20
@@ -64,8 +93,8 @@ request = {
     "volume": lot,
     "type": mt5.ORDER_TYPE_BUY,
     "price": price,
-    "sl": price - 100 * point,
-    "tp": price + 100 * point,
+    "sl": price - 74 * point,
+    "tp": price + 84 * point,
     "deviation": deviation,
     "magic": 234000,
     "comment": "python script open",
@@ -76,9 +105,9 @@ request = {
 # send a trading request
 result = mt5.order_send(request)
 # check the execution result
-print("1. order_send(): by {} {} lots at {} with deviation={} points".format(symbol,lot,price,deviation));
+print("1. order_send(): by botfx in eurusd lots at 0.01 with deviation=20 points".format(symbol,lot,price,deviation));
 if result.retcode != mt5.TRADE_RETCODE_DONE:
-    print("2. order_send failed, retcode={}".format(result.retcode))
+    print("2. order_send failed, retcode=".format(result.retcode))
     # request the result as a dictionary and display it element by element
     result_dict=result._asdict()
     for field in result_dict.keys():
@@ -130,7 +159,7 @@ else:
         if field=="request":
             traderequest_dict=result_dict[field]._asdict()
             for tradereq_filed in traderequest_dict:
-                print("       traderequest: {}={}".format(tradereq_filed,traderequest_dict[tradereq_filed]))
+                print("traderequest: {}={}".format(tradereq_filed,traderequest_dict[tradereq_filed]))
  
 
 # shut down connection to the MetaTrader 5 terminal

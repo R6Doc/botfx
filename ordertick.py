@@ -4,7 +4,6 @@ import time
 import pandas as pd 
 import pytz
 
-
 def ordertick():
     print ("Metatrader5 Package Autor",mt5.__author__)
     print ("Metatrader5 Package Version",mt5.__version__)
@@ -15,7 +14,7 @@ def ordertick():
         print("initialize() failed, error code =",mt5.last_error())
 
     print(mt5.version())    
-    time = datetime.datetime.now()
+    times = datetime.datetime.now()
     account=28896895
     authorized=mt5.login(account, password="xzrtv8do")
     if authorized:
@@ -33,12 +32,17 @@ def extract():
     selected= mt5.symbol_select("EURUSD",True)
     symbol_info = mt5.symbol_info_tick("EURUSD")
     for selected in symbol_info:
+      times = datetime.datetime.now()
       if symbol_info:
         print(symbol_info)
-        time.sleep(15)
+        time.sleep(5)
+
+    symbol_info = mt5.symbol_info_tick("EURUSD")
+    for selected in symbol_info:
+      times = datetime.datetime.now()
+      if symbol_info:
+        print(symbol_info)
+        time.sleep(5)
         
-          
-
-
 ordertick()
 extract()

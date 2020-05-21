@@ -32,7 +32,7 @@ def ordersend():
     # display trading account data in the form of a list
         print("Show account_info()._asdict():")
     account_info_dict = mt5.account_info()._asdict()
-        for prop in account_info_dict:
+    for prop in account_info_dict:
             print("".format(prop, account_info_dict[prop]))
     else:
         print("failed to connect at account #28896895, error code:".format(account, mt5.last_error()))
@@ -134,3 +134,4 @@ def ordersend():
  
     # shut down connection to the MetaTrader 5 terminal
     mt5.shutdown()
+ordersend()    

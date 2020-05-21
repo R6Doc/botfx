@@ -35,14 +35,16 @@ def extract():
       times = datetime.datetime.now()
       if symbol_info:
         print(symbol_info)
-        time.sleep(5)
+        time.sleep(1)
 
     symbol_info = mt5.symbol_info_tick("EURUSD")
     for selected in symbol_info:
       times = datetime.datetime.now()
       if symbol_info:
         print(symbol_info)
-        time.sleep(5)
+        time.sleep(1)
+        
+    
         
 ordertick()
 extract()

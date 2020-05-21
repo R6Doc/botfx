@@ -10,7 +10,7 @@ def ordertick():
     print ("Metatrader5 Package Version",mt5.__version__)
     print ("Autors of the bot: Machineblock and R6Doc")
     print ("Bot version 0.01")
- 
+
     if not mt5.initialize():
         print("initialize() failed, error code =",mt5.last_error())
 
@@ -33,7 +33,10 @@ def extract():
 
    time = datetime.datetime.now()
    print (time)
-   symbol="EURUSD"
-   tick= mt5.symbol_info_tick(symbol, time)
+   selected= mt5.symbol_select("EURUSD",True)
+   if selected:
+      symbol_info = mt5.symbol_info_tick("EURUSD")
+      print (symbol_info,time)
+
   
 extract() 

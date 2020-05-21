@@ -29,22 +29,15 @@ def ordertick():
         print("failed to connect at account #{}, error code: {}".format(account, mt5.last_error()))
 
 def extract():
-    selected= mt5.symbol_select("EURUSD",True)
-    symbol_info = mt5.symbol_info_tick("EURUSD")
-    for selected in symbol_info:
-      times = datetime.datetime.now()
-      if symbol_info:
-        print(symbol_info)
-        time.sleep(1)
+    while 1:
+        selected= mt5.symbol_select("EURUSD",True)
+        symbol_info = mt5.symbol_info_tick("EURUSD")
+        times = datetime.datetime.now()
+        
+        if symbol_info:
+            print(symbol_info)
+            time.sleep(1)
+   
 
-    symbol_info = mt5.symbol_info_tick("EURUSD")
-    for selected in symbol_info:
-      times = datetime.datetime.now()
-      if symbol_info:
-        print(symbol_info)
-        time.sleep(1)
-        
-    
-        
 ordertick()
 extract()

@@ -134,4 +134,4 @@ def ordersend():
  
     # shut down connection to the MetaTrader 5 terminal
     mt5.shutdown()
-ordersend()    
+   

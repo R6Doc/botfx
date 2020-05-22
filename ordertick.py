@@ -45,8 +45,5 @@ def rates():
      
      times= datetime.datetime.now()
      if rate:
-       print(rate)
-       time.sleep(2)
-       
-ordertick()
-rates()
+        print(rate)
+        time.sleep(2)

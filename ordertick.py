@@ -41,8 +41,7 @@ def extract():
 
 def rates():
    while True:
-     rate= mt5.copy_rates_from_pos("EURUSD",mt5.TIMEFRAME_M5, 0, 1)
-     
+     rate= mt5.copy_rates_from_pos("EURUSD",mt5.TIMEFRAME_M1, 0, 1)
      times= datetime.datetime.now()
      if rate:
         print(rate)

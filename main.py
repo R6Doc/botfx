@@ -5,6 +5,7 @@ import datetime
 import time
 import pandas as pd 
 import pytz
+import buy
 
 def startbot():
     print("\n================================================================================================================================================================")
@@ -17,7 +18,9 @@ def startbot():
     
     print("\n                           1. Show Tick Rates                                                                       2. Real Time Price                            ")
     print(" ")
-    print("                           3. OrderSend                                                                               4.  Coming Soon                               \n")
+    print("                             3. OrderSend                                                                               4.  Coming Soon                               ")
+    print(" ")
+    print("                             5. Star buy bot                                                                                                                                            \n")
     a = input("                                                           Press Any Number:  ")
     
     if a == "1":
@@ -40,4 +43,14 @@ def startbot():
     if a == "4":
         print("Coming Soon")
     
+    if a== "5":
+        print(        "aprende a descargar office...")
+        time.sleep(5)
+        print(         "Ya aprendió?")
+        time.sleep(5)
+        print(           "muyyyyyy bien, procedamos")
+        time.sleep(2)
+        buy.buy1()
+
+
 startbot()

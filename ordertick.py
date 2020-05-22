@@ -44,5 +44,5 @@ def rates():
      rate= mt5.copy_rates_from_pos("EURUSD",mt5.TIMEFRAME_M1, 0, 1)
      times= datetime.datetime.now()
      if rate:
-        print(rate)
-        time.sleep(2)
+       print(rate)
+       time.sleep(2)

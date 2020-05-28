@@ -1,5 +1,4 @@
 import ordertick
-import ordersend
 import MetaTrader5 as mt5
 import datetime
 import time
@@ -20,9 +19,11 @@ def startbot1():
     print(" ")
     print("\n                           1. Show Tick Rates                                                                       2. Real Time Price                            ")
     print(" ")
-    print("                             3. OrderSend                                                                             4.  Start Sell                               ")
+    print("                             3. Start Buy                                                                             4.  Start Sell                               ")
     print(" ")
-    print("                             5. Start Buy                                                                                                                                            \n")
+    print("                                                                                                                                                                       \n")
+    print("  ")
+    print("  ")
     a = input("                                                           Press Any Number:  ")
     
     if a == "1":
@@ -43,18 +44,13 @@ def startbot1():
         print("        Loading...")
         print(" ")
         time.sleep(2)
-        ordersend.ordersend()
+        functions.buy1()
     
     if a == "4":
         print("         Loading...")
         print(" ")
         time.sleep(2)
         functions.sell1()
-    if a== "5":
-        print("        Loading...")
-        print(" ")
-        time.sleep(2)
-        functions.buy1()
     startbot1()
 
 startbot()

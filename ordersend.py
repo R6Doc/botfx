@@ -9,13 +9,13 @@ def ordersend():
     print ("Autors of the bot: Machineblock and R6Doc")
     print ("Bot version 0.01")
 
-# establish connection to the MetaTrader 5 terminal
+    # establish connection to the MetaTrader 5 terminal
     if not mt5.initialize():
         print("initialize() failed, error code =",mt5.last_error())
     
-# display data on MetaTrader 5 version
+    # display data on MetaTrader 5 version
     print(mt5.version())
-# connect to the trade account without specifying a password and a server
+    # connect to the trade account without specifying a password and a server
     account=28896895
     authorized=mt5.login(account)  # the terminal database password is applied if connection data is set to be remembered
     if authorized:
@@ -94,7 +94,7 @@ def ordersend():
     print("   opened position with POSITION_TICKET={}".format(result.order))
     print("   sleep 2 seconds before closing position #{}".format(result.order))
     time.sleep(2)
-# create a close request
+    # create a close request
     position_id=result.order
     price=mt5.symbol_info_tick(symbol).bid
     deviation=20

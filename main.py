@@ -15,7 +15,9 @@ def startbot():
     print ("                                       Bot version 0.01\n")
     print("=============================================================================================================================================================================")
     time.sleep(2)
-    
+
+def startbot1():
+    print(" ")
     print("\n                           1. Show Tick Rates                                                                       2. Real Time Price                            ")
     print(" ")
     print("                             3. OrderSend                                                                             4.  Start Sell                               ")
@@ -25,29 +27,35 @@ def startbot():
     
     if a == "1":
         print(        "Loading...")
+        print(" ")
         time.sleep(2)
         ordertick.ordertick()
         ordertick.extract()
 
     if a == "2":
         print("        Loading...")
+        print(" ")
         time.sleep(2)
         ordertick.ordertick()
         ordertick.rates()
         
     if a == "3":
         print("        Loading...")
+        print(" ")
         time.sleep(2)
         ordersend.ordersend()
     
     if a == "4":
         print("         Loading...")
+        print(" ")
         time.sleep(2)
         functions.sell1()
     if a== "5":
         print("        Loading...")
+        print(" ")
         time.sleep(2)
         functions.buy1()
-
+    startbot1()
 
 startbot()
+startbot1()
